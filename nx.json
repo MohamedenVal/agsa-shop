@@ -1,38 +1,58 @@
 {
-  "npmScope": "agsa-shop",
-  "affected": {
-    "defaultBase": "master"
-  },
-  "implicitDependencies": {
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
+    "npmScope": "agsa-shop",
+    "affected": {
+        "defaultBase": "master"
     },
-    ".eslintrc.json": "*"
-  },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
-    }
-  },
-  "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ]
-  },
-  "projects": {
-    "eshop": {
-      "tags": []
+    "implicitDependencies": {
+        "package.json": {
+            "dependencies": "*",
+            "devDependencies": "*"
+        },
+        ".eslintrc.json": "*"
     },
-    "eshop-e2e": {
-      "tags": [],
-      "implicitDependencies": ["eshop"]
+    "tasksRunnerOptions": {
+        "default": {
+            "runner": "@nrwl/nx-cloud",
+            "options": {
+                "cacheableOperations": ["build", "lint", "test", "e2e"],
+                "accessToken": "YzFhMWIyMmMtZjY5NC00MTBiLTllZmUtOWE5ZTE4YjIyOTI3fHJlYWQtd3JpdGU="
+            }
+        }
+    },
+    "targetDependencies": {
+        "build": [
+            {
+                "target": "build",
+                "projects": "dependencies"
+            }
+        ]
+    },
+    "projects": {
+        "admin": {
+            "tags": []
+        },
+        "admin-e2e": {
+            "tags": [],
+            "implicitDependencies": ["admin"]
+        },
+        "eshop": {
+            "tags": []
+        },
+        "eshop-e2e": {
+            "tags": [],
+            "implicitDependencies": ["eshop"]
+        },
+        "orders": {
+            "tags": []
+        },
+        "products": {
+            "tags": []
+        },
+        "ui": {
+            "tags": []
+        },
+        "users": {
+            "tags": []
+        }
     }
-  }
 }
