@@ -18,7 +18,8 @@
             "@agsa-shop/orders": ["libs/orders/src/index.ts"],
             "@agsa-shop/products": ["libs/products/src/index.ts"],
             "@agsa-shop/ui": ["libs/ui/src/index.ts"],
-            "@agsa-shop/users": ["libs/users/src/index.ts"]
+            "@agsa-shop/users": ["libs/users/src/index.ts"],
+            "@env/*" : ["environments/*"]
         }
     },
     "exclude": ["node_modules", "tmp"]
