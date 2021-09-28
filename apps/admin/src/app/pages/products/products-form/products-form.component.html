@@ -46,12 +46,12 @@
             </div>
             <div class="field col-4">
               <label for="category">Category</label><br>
-              <p-dropdown 
-                [options]="categories" 
-                formControlName="category" 
+              <p-dropdown
+                [options]="categories"
+                formControlName="category"
                 optionLabel="name"
                 optionValue="id"
-                [filter]="true" 
+                [filter]="true"
                 filterBy="name"
                 [showClear]="true"
                 placeholder="Select a Category "
@@ -75,15 +75,15 @@
             </div>
             <div class="field col-12">
               <label for="image">Main Image</label>
-              <input 
-                type="file" 
-                name="image" 
+              <input
+                type="file"
+                name="image"
                 class="p-inputtext"
                 accept="image/*"
-                id="image" 
-                (change)="onImageUpload($event)" 
-
+                id="image"
+                (change)="onImageUpload($event)"
               />
+              <small *ngIf="productForm.image.invalid && isSubmitted" class="p-error">The main image is required!</small>
               <div class="col-2 p-pt-2 p-pl-0">
                 <img style="width: 100%;" [src]="imageDisplay" alt="the main image for the product">
               </div>

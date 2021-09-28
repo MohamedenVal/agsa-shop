@@ -1,0 +1,89 @@
+<p-toast></p-toast>
+<div class="admin-page">
+  <p-card [header]="editMode ? 'Edit User' : 'Add User'" [subheader]="editMode ? 'You can dit the user here' : 'You can add a user here'">
+    <div class="grid">
+      <div class="col-12">
+        <p-toolbar>
+          <div class="toolbar-group-left">
+          </div>
+          <div class="toolbar-group-left">
+            <p-button
+            styleClass="p-button-primary mr-2"
+            [label]="editMode ? 'Edit' : 'Create'"
+            icon="pi pi-pencil"
+            (click)="onSubmit()"
+            ></p-button>
+
+            <p-button
+            styleClass="p-button-secondary"
+            label="Cancel"
+            icon="pi pi-arrow-circle-left"
+            ></p-button>
+
+          </div>
+        </p-toolbar>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="col-12">
+        <form [formGroup]="form">
+          <div class="fluid formgrid grid">
+            <div class="field col-4">
+              <label for="name">Name</label><br>
+              <input formControlName="name" id="name" type="text" pInputText>
+              <small *ngIf="userForm.name.invalid && isSubmitted" class="p-error">Name is required!</small>
+            </div>
+
+            <div class="field col-4">
+              <label for="email">Email</label><br>
+              <input formControlName="email" id="email" type="text" pInputText>
+              <small *ngIf="userForm.email.invalid && isSubmitted" class="p-error">
+                email is required!
+              </small>
+            </div>
+            <div class="field col-4">
+              <label for="password">Password</label><br>
+              <input formControlName="password" type="password" id="password" pInputText>
+            </div>
+            <div class="field col-4">
+              <label for="phone">Phone</label><br>
+              <p-inputMask
+                mask="(999) 9999-9999"
+                formControlName="phone"
+                placeholder="(999) 9999-9999"
+              ></p-inputMask>
+              <small *ngIf="userForm.phone.invalid && isSubmitted" class="p-error">Phone is required!</small>
+            </div>
+            <div class="field col-4">
+              <label for="isAdmin">Is Admin</label><br>
+              <p-inputSwitch formControlName="isAdmin"></p-inputSwitch>
+            </div>
+          </div>
+
+          <div class="fluid formgrid grid">
+            <div class="field col-4">
+              <label for="street">Street</label><br>
+              <input formControlName="street" id="street" type="text" pInputText>
+            </div>
+            <div class="field col-4">
+              <label for="apartement">Apartement</label><br>
+              <input formControlName="apartement" id="apartement" type="text" pInputText>
+            </div>
+            <div class="field col-4">
+              <label for="zip">Zip code</label><br>
+              <input formControlName="zip" id="zip" type="text" pInputText>
+            </div>
+            <div class="field col-4">
+              <label for="city">City</label><br>
+              <input formControlName="city" id="city" type="text" pInputText>
+            </div>
+            <div class="field col-4">
+              <label for="country">Country</label><br>
+              <input formControlName="country" id="country" type="text" pInputText>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </p-card>
+</div>
