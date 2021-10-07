@@ -1,17 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BannerComponent } from './banner/banner.component';
+// PrimNg uIs
+import { ButtonModule } from 'primeng/button';
+import { BannerComponent } from './components/banner/banner.component';
 import { SliderComponent } from './slider/slider.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 @NgModule({
-    imports: [CommonModule],
-    declarations: [
-      BannerComponent,
-      SliderComponent
-    ],
-    exports: [
-      BannerComponent,
-      SliderComponent
-    ]
+    imports: [CommonModule, ButtonModule],
+    declarations: [BannerComponent, SliderComponent, GalleryComponent],
+    exports: [BannerComponent, SliderComponent, GalleryComponent]
 })
 export class UiModule {}

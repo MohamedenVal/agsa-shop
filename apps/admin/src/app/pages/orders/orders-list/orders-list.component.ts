@@ -10,7 +10,7 @@ const ORDER_STATUS = {
     },
     1: {
         label: 'Processed',
-        color: 'warnning'
+        color: 'warning'
     },
     2: {
         label: 'Shipped',
@@ -79,5 +79,46 @@ export class OrdersListComponent implements OnInit {
         this.ordersService.getOrders().subscribe((cats) => {
             this.orders = cats;
         });
+    }
+
+    getStatusLabel(order: Order): string {
+        switch (order.status) {
+            case 4:
+                return this.orderStatus[4].label;
+                break;
+            case 3:
+                return this.orderStatus[3].label;
+                break;
+            case 2:
+                return this.orderStatus[2].label;
+                break;
+            case 1:
+                return this.orderStatus[1].label;
+                break;
+
+            default:
+                return this.orderStatus[0].label;
+                break;
+        }
+    }
+    getStatuscolor(order: Order): string {
+        switch (order.status) {
+            case 4:
+                return this.orderStatus[4].color;
+                break;
+            case 3:
+                return this.orderStatus[3].color;
+                break;
+            case 2:
+                return this.orderStatus[2].color;
+                break;
+            case 1:
+                return this.orderStatus[1].color;
+                break;
+
+            default:
+                return this.orderStatus[0].color;
+                break;
+        }
     }
 }

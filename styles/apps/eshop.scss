@@ -1,10 +1,89 @@
 @import '../base/color.scss';
 @import '../base/fonts.scss';
 @import '../base/mixins.scss';
-@import '../base/configuration.scss';
 
 // PrimeNg library for UIs ...
 @import '~primeicons/primeicons.css';
 @import '~primeng/resources/themes/saga-blue/theme.css';
 @import '~primeng/resources/primeng.min.css';
 @import '~primeflex/primeflex.css';
+
+@import '../base/configuration.scss';
+.p-button {
+    background-color: $primary-color;
+    border: 0;
+}
+
+// Special styles for eshop App
+
+@import '../libs/products.scss';
+@import '../libs/ui.scss';
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: var(--surface-100);
+}
+
+header {
+    margin-bottom: 25px;
+    .logo {
+        img {
+            width: 160px;
+        }
+    }
+}
+
+.nav {
+    li {
+        list-style: none;
+        display: inline-block;
+        margin: 0 8px;
+
+        a {
+            color: var(--surface-500);
+            cursor: pointer;
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+// ...
+footer {
+    background-color: var(--yellow-100);
+    min-height: 50px;
+    padding: 10px 25px;
+    width: 100%;
+    margin-top: 25px;
+
+    .footer-wrapper {
+        align-items: center;
+
+        .social {
+            margin-top: 15px;
+            text-align: right;
+            .nav {
+                justify-content: flex-end;
+            }
+        }
+    }
+}
+
+// .. styles related to prime ng
+.product-quantity {
+    .p-button {
+        background-color: $primary-color;
+        border: 0;
+    }
+}

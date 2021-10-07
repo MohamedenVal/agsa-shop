@@ -5,7 +5,7 @@ export const ORDER_STATUS = {
     },
     1: {
         label: 'Processed',
-        color: 'warnning'
+        color: 'warning'
     },
     2: {
         label: 'Shipped',

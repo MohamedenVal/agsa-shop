@@ -20,11 +20,14 @@
         <h5>Order Status</h5>
         <p-dropdown
           [options]="orderStatus"
-          [(ngModel)]="selectedStatus"
+
+          (onChange)="onStatusChange($event)"
           optionLabel="name"
+          optionValue="value"
         >
 
         </p-dropdown>
+        <!-- Selected status -->
       </div>
 
       <div class="col-4">
@@ -34,9 +37,53 @@
     </div>
   </p-fieldset>
   <p-fieldset legend="Order Items" [toggleable]="true" styleClass="mb-4">
-    some text ...
+    <div class="grid mb-5" >
+      <div class="col-2 text-bold"><h4>Nmae</h4></div>
+      <div class="col-2"><h4>Brand</h4></div>
+      <div class="col-2"><h4>Category</h4></div>
+      <div class="col-2"><h4>Category</h4></div>
+      <div class="col-2"><h4>Quantity</h4></div>
+      <div class="col-2"><h4>Total</h4></div>
+    </div>
+
+    <div class="grid mb-3" *ngFor="let orderItem of order.orderItems">
+      <div class="col-2">{{ orderItem.product.name }}</div>
+      <div class="col-2">{{ orderItem.product.brand }}</div>
+      <div class="col-2">{{ orderItem.product.category.name }}</div>
+      <div class="col-2">{{ orderItem.product.price }}</div>
+      <div class="col-2">{{ orderItem.quantity }}</div>
+      <div class="col-2">{{ orderItem.product.price * orderItem.quantity }}</div>
+    </div>
+    <div class="grid" style="color: green;">
+      <div class="col-8"></div>
+      <div class="col-2">
+        <h4>Total Price</h4>
+      </div>
+      <div class="col-2">
+        <p>{{ order.totalPrice | currency}}</p>
+      </div>
+    </div>
   </p-fieldset>
   <p-fieldset legend="Order Adress" [toggleable]="true" styleClass="mb-4">
-    some text ...
+    <div class="grid">
+      <div class="col-4">
+        <h5>Customer Adress</h5>
+        <p>
+          {{ order.shippingAddress1}} <br>
+          {{ order.shippingAddress2}} <br>
+          {{ order.city}} <br>
+          {{ order.country}}
+        </p>
+      </div>
+
+      <div class="col-4">
+        <h5>Customer Info</h5>
+        <p>{{order.user.name }}</p>
+      </div>
+      <div class="col-4">
+        <h5>Contact Inforamtion</h5>
+        <p>{{ order.phone }}</p>
+      </div>
+    </div>
   </p-fieldset>
   </p-card>
