@@ -1,7 +1,7 @@
 <div class="categories-banner">
     <h3>Categories</h3>
-    <div class="grid">
-        <div class="col-2" *ngFor="let category of categories">
+    <div class="grid banner">
+        <div class="category-wrapper" *ngFor="let category of categories">
             <div
                 class="category"
                 [routerLink]="'/category/' + category.id"

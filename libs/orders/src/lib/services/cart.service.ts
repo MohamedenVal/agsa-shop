@@ -10,7 +10,7 @@ export const CART_KEY = 'cart';
 export class CartService {
     cart$: BehaviorSubject<Cart> = new BehaviorSubject(this.getCart());
 
-    constructor() {}
+    // constructor() {}
 
     initCartLocalStorage() {
         const cart: Cart = this.getCart();
@@ -27,7 +27,7 @@ export class CartService {
     getCart(): Cart {
         const cartJsonString: string | null = localStorage.getItem(CART_KEY);
         if (cartJsonString) {
-            const cart: Cart = JSON.parse(cartJsonString || '');
+            const cart: Cart = JSON.parse(cartJsonString || '{"items":[]}');
             return cart;
         }
 

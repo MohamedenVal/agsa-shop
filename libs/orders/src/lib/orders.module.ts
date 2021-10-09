@@ -30,6 +30,4 @@ const routes: Routes = [
     ],
     exports: [CartIconsComponent]
 })
-export class OrdersModule {
-    constructor() {}
-}
+export class OrdersModule {}

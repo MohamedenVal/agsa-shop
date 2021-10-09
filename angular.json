@@ -29,8 +29,8 @@
                             "budgets": [
                                 {
                                     "type": "initial",
-                                    "maximumWarning": "500kb",
-                                    "maximumError": "1mb"
+                                    "maximumWarning": "1mb",
+                                    "maximumError": "3mb"
                                 },
                                 {
                                     "type": "anyComponentStyle",
@@ -246,22 +246,6 @@
             "sourceRoot": "libs/orders/src",
             "prefix": "orders",
             "architect": {
-                "build": {
-                    "builder": "@nrwl/angular:ng-packagr-lite",
-                    "outputs": ["dist/libs/orders"],
-                    "options": {
-                        "project": "libs/orders/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "libs/orders/tsconfig.lib.prod.json"
-                        },
-                        "development": {
-                            "tsConfig": "libs/orders/tsconfig.lib.json"
-                        }
-                    },
-                    "defaultConfiguration": "production"
-                },
                 "test": {
                     "builder": "@nrwl/jest:jest",
                     "outputs": ["coverage/libs/orders"],

@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    apiURL: 'http://localhost:3000/api/v1/'
+    apiURL: 'https://rimcode-rimmart-backend.herokuapp.com/api/v1/'
 };
 
 /*
