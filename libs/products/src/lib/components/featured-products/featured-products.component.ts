@@ -16,7 +16,7 @@ export class FeaturedProductsComponent implements OnInit, OnDestroy {
     constructor(private productsService: ProductsService) {}
 
     ngOnInit(): void {
-        this._getFeatured(4);
+        this._getFeatured(24);
     }
 
     private _getFeatured(count: number) {

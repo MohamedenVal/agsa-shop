@@ -7,6 +7,7 @@ import {
 } from '@agsa-shop/products';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'products-products-list',
@@ -21,10 +22,13 @@ export class ProductsListComponent implements OnInit {
     constructor(
         private productsService: ProductsService,
         private CategoriesService: CategoriesService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private titleService: Title
     ) {}
 
     ngOnInit(): void {
+        this.setTitle();
+
         this.route.params.subscribe((params) => {
             params.categoryid
                 ? this._getProducts([params.categoryid])
@@ -35,6 +39,10 @@ export class ProductsListComponent implements OnInit {
                 : (this.isCategoryPage = false);
         });
         this._getCategories();
+    }
+
+    public setTitle(): void {
+        this.titleService.setTitle('المنتجات | ريم مارت' )
     }
 
     private _getProducts(selectedCategories?: string[]) {

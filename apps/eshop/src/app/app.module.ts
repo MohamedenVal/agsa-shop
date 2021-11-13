@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,6 +14,8 @@ import { AccordionModule } from 'primeng/accordion';
 import { NavComponent } from './shared/nav/nav.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '@env/environment';
 
 const routes: Routes = [
     {
@@ -38,9 +40,17 @@ const routes: Routes = [
         ProductsModule,
         UiModule,
         OrdersModule,
-        AccordionModule
+        AccordionModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+            // Register the ServiceWorker as soon as the app is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        })
     ],
-    providers: [],
+    providers: [
+        Title
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'admin-shell',
-  templateUrl: './shell.component.html',
-  styleUrls: ['./shell.component.scss']
+    selector: 'admin-shell',
+    templateUrl: './shell.component.html',
+    styleUrls: ['./shell.component.scss']
 })
-export class ShellComponent implements OnInit {
+export class ShellComponent {
+    navToggle() {
+        const sideBar = document.getElementById('side-bar');
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+        sideBar?.classList.toggle('side-nav');
+    }
 }

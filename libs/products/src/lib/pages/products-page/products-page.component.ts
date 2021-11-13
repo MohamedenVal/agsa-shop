@@ -1,4 +1,5 @@
 import { CartItem } from '../../models/cart';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { Product, ProductsService } from '@agsa-shop/products';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';

@@ -1,21 +1,23 @@
 <div class="products-page">
   <h4 >الأصناف </h4>
-  <div class="col-12 md:col-3 products-page-cats" *ngIf="!isCategoryPage">
-    <div class="field-checkbox" *ngFor="let category of categories">
-      <p-checkbox
-        [(ngModel)]="category.checked"
-        [binary]="true"
-        [inputId]="category.id"
-        (onChange)="categoriesFilter()"
-      ></p-checkbox>
-      <label for="{{ category.id }}">{{ category.name }}</label>
-    </div>
-  </div>
   <div class="grid">
-    <div [ngClass]="{'col-12 md:col-9' : !isCategoryPage, 'col-12' : isCategoryPage}">
-      <div class="grid justify-content-around" *ngIf="products">
-        <div  [ngClass]="{'col-6 md:col-4 ' : !isCategoryPage, 'col-6 md:col-3' : isCategoryPage}" *ngFor="let product of products">
-          <products-product-item [product]="product"></products-product-item>
+    <div class="col-12 md:col-3 products-page-cats" *ngIf="!isCategoryPage">
+      <div class="field-checkbox" *ngFor="let category of categories">
+        <p-checkbox
+          [(ngModel)]="category.checked"
+          [binary]="true"
+          [inputId]="category.id"
+          (onChange)="categoriesFilter()"
+        ></p-checkbox>
+        <label for="{{ category.id }}">{{ category.name }}</label>
+      </div>
+    </div>
+    <div class="grid col-12 md:col-9">
+      <div [ngClass]="{'col-12 md:col-12' : !isCategoryPage, 'col-12' : isCategoryPage}">
+        <div class="grid justify-content-around" *ngIf="products">
+          <div  [ngClass]="{'col-6 md:col-4 ' : !isCategoryPage, 'col-6 md:col-3' : isCategoryPage}" *ngFor="let product of products">
+            <products-product-item [product]="product"></products-product-item>
+          </div>
         </div>
       </div>
     </div>

@@ -1,20 +1,20 @@
 <div class="cart-page">
   <div class="grid">
-    <div class="col-8">
+    <div class="col-12 md:col-8">
       <div>
         <p-button
-          label="Continue Shopping"
+          label="العودة إلى التسوق"
           icon="pi pi-arrow-left"
           (onClick)="backToShop()"
         ></p-button>
       </div>
       <div>
         <h4>
-          My Cart: {{ cartCount }} Item(s)
+          الحاوية: {{ cartCount }} عناصر
         </h4>
       </div>
       <div class="cart-shopping mb-5">
-        Shipping after the payment, Delivery time : 1 to 4 days
+        الشحن سيتم بعد تأكيد الدفع, وسيتم التوصيل بين يوم واحد أو ثلاثة أيام.
       </div>
       <div class="cart-item mb-5" *ngFor="let cartItem of cartItemsDetailed">
         <div class="grid p-fluid">
@@ -39,7 +39,7 @@
               </p-inputNumber>
             </div>
             <div class="cart-item-subtotal">
-              Subtotal:
+              المجموع:
               <span class="cart-item-subtotal-value">{{ (cartItem.product.price * cartItem.quantity) | currency }}</span>
             </div>
           </div>

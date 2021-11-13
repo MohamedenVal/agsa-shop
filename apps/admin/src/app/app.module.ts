@@ -40,6 +40,8 @@ import { OrdersListComponent } from './pages/orders/orders-list/orders-list.comp
 import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detail.component';
 import { FieldsetModule } from 'primeng/fieldset';
 import { AuthGuard, JwtInterceptor, UsersModule } from '@agsa-shop/users';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '@env/environment';
 
 const routes: Routes = [
     {
@@ -47,6 +49,10 @@ const routes: Routes = [
         component: ShellComponent,
         canActivate: [AuthGuard],
         children: [
+            {
+                path: '',
+                component: DashboardComponent
+            },
             {
                 path: 'dashboard',
                 component: DashboardComponent
@@ -137,7 +143,13 @@ const routes: Routes = [
         TagModule,
         InputMaskModule,
         FieldsetModule,
-        UiModule
+        UiModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+            // Register the ServiceWorker as soon as the app is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        })
     ],
     providers: [
         CategoriesService,

@@ -1,4 +1,9 @@
-<div class="admin-wrapper">
+<div class="nav-tog" (click)="navToggle()">
+  <div class="nav-tog-item first"></div>
+  <div class="nav-tog-item"></div>
+  <div class="nav-tog-item"></div>
+</div>
+<div class="admin-wrapper" >
   <admin-sidebar></admin-sidebar>
   <div class="admin-main">
     <router-outlet></router-outlet>

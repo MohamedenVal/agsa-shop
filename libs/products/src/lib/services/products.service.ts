@@ -10,6 +10,7 @@ export const CART_KEY = 'cart';
 @Injectable({
     providedIn: 'root'
 })
+
 export class ProductsService {
     apiURLProducts = environment.apiURL + 'products/';
     cart$: BehaviorSubject<Cart> = new BehaviorSubject(this.getCart());
@@ -26,7 +27,7 @@ export class ProductsService {
         return this.http.get<Product[]>(this.apiURLProducts);
     }
 
-    // Getting a specific catewgory by id
+    // Getting a specific category by id
     getSingleProduct(ProductId: string): Observable<Product> {
         return this.http.get<Product>(`${this.apiURLProducts}${ProductId}`);
     }
@@ -96,5 +97,15 @@ export class ProductsService {
         localStorage.setItem(CART_KEY, cartJson);
         this.cart$.next(cart);
         return cart;
+    }
+
+    uploadProductImages(
+        productFormData: FormData,
+        ProductId: string
+    ): Observable<Product> {
+        return this.http.put<Product>(
+            `${this.apiURLProducts}/gallery-image/${ProductId}`,
+            productFormData
+        );
     }
 }

@@ -23,6 +23,7 @@ export class ProductsFormComponent implements OnInit {
     productPramId = '';
     categories!: Category[];
     imageDisplay!: string | ArrayBuffer | null | undefined;
+    imagesPreview!: string[] | ArrayBuffer | null | undefined;
 
     constructor(
         private messageService: MessageService,
@@ -88,6 +89,42 @@ export class ProductsFormComponent implements OnInit {
             };
             fileReader.readAsDataURL(file);
         }
+    }
+
+    imagesUpload(event: any) {
+        const files = event.target.files;
+
+        const formImages = new FormData();
+        for (let index = 0; index < files.length; index++) {
+            const element = files[index];
+
+            console.log(element);
+            formImages.append('images', element);
+        }
+
+        this.productsService
+            .uploadProductImages(formImages, this.productPramId)
+            .subscribe(
+                (product: Product) => {
+                    this.messageService.add({
+                        severity: 'success',
+                        summary: 'Success',
+                        detail: `Product ${product.name} was updated!`
+                    });
+                    timer(2000)
+                        .toPromise()
+                        .then(() => {
+                            this.location.back();
+                        });
+                },
+                () => {
+                    this.messageService.add({
+                        severity: 'error',
+                        summary: 'Error',
+                        detail: 'Sorry, product was not updated!'
+                    });
+                }
+            );
     }
 
     // method for creating a ctegory
