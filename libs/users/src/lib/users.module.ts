@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileIconComponent } from './profile-icon/profile-icon.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
     {
@@ -22,6 +24,10 @@ const routes: Routes = [
         InputTextModule,
         ButtonModule
     ],
-    declarations: [LoginComponent]
+    declarations: [LoginComponent, ProfileIconComponent, ContactComponent],
+    exports: [
+      ProfileIconComponent,
+      ContactComponent
+    ]
 })
 export class UsersModule {}

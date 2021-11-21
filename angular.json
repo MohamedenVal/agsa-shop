@@ -23,7 +23,7 @@
                             "apps/admin/src/manifest.webmanifest"
                         ],
                         "styles": ["apps/admin/src/styles.scss", "node_modules/quill/dist/quill.core.css", "node_modules/quill/dist/quill.snow.css"],
-                        "scripts": ["node_modules/quill/dist/quill.js"],
+                        "scripts": ["node_modules/quill/dist/quill.js", "node_modules/jquery/dist/jquery.min.js"],
                         "serviceWorker": true,
                         "ngswConfigPath": "apps/admin/ngsw-config.json"
                     },
