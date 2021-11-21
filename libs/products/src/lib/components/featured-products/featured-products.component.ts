@@ -1,6 +1,6 @@
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { Product, ProductsService } from '@agsa-shop/products';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -13,13 +13,15 @@ export class FeaturedProductsComponent implements OnInit, OnDestroy {
     productsFeat: Product[] = [];
     endSub$: Subject<any> = new Subject();
 
+    @Input() featuredLimit!: number;
+
     constructor(private productsService: ProductsService) {}
 
     ngOnInit(): void {
-        this._getFeatured(24);
+        this._getFeatured(this.featuredLimit);
     }
 
-    private _getFeatured(count: number) {
+    private _getFeatured(count=4) {
         this.productsService
             .getFeaturedProducts(count)
             .pipe(takeUntil(this.endSub$))

@@ -14,6 +14,7 @@ import { ProductsListComponent } from './pages/products-list/products-list.compo
 import { ProductsPageComponent } from './pages/products-page/products-page.component';
 import { RatingModule } from 'primeng/rating';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { WhatsappButtonComponent } from './whatsapp-button/whatsapp-button.component';
 
 const routes: Routes = [
     {
@@ -47,14 +48,16 @@ const routes: Routes = [
         ProductItemComponent,
         FeaturedProductsComponent,
         ProductsListComponent,
-        ProductsPageComponent
+        ProductsPageComponent,
+        WhatsappButtonComponent
     ],
     exports: [
         ProductsSearchComponent,
         CategoriesBannerComponent,
         ProductItemComponent,
         FeaturedProductsComponent,
-        ProductsListComponent
+        ProductsListComponent,
+        WhatsappButtonComponent
     ]
 })
 export class ProductsModule {}

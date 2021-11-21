@@ -1,3 +1,4 @@
+/* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import {
     CartService,
     OrdersService,
@@ -8,6 +9,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'orders-cart-page',
@@ -22,11 +24,18 @@ export class CartPageComponent implements OnInit, OnDestroy {
     constructor(
         private router: Router,
         private cartService: CartService,
-        private productService: OrdersService
+        private productService: OrdersService,
+        private titleService: Title
     ) {}
 
     ngOnInit(): void {
+        this.setTitle();
+
         this._getCartDeatails();
+    }
+
+    public setTitle(): void {
+        this.titleService.setTitle('الحاوية | ريم مارت')
     }
 
     backToShop() {

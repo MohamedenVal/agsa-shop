@@ -5,6 +5,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Title } from '@angular/platform-browser';
+
 
 @Component({
     selector: 'products-page',
@@ -20,15 +22,22 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     constructor(
         private productsService: ProductsService,
         private route: ActivatedRoute,
-        private productService: ProductsService
+        private productService: ProductsService,
+        private titleService: Title
     ) {}
 
     ngOnInit(): void {
+        this.setTitle();
+        
         this.route.params.subscribe((params) => {
             if (params.productid) {
                 this._getProduct(params.productid);
             }
         });
+    }
+
+    public setTitle(name=""): void {
+        this.titleService.setTitle(' المنتجات ريم مارت  | ' + name )
     }
 
     private _getProduct(id: string) {
@@ -37,6 +46,7 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this.endSub$))
             .subscribe((resProduct) => {
                 this.product = resProduct;
+                this.setTitle(resProduct.name)
             });
     }
 
