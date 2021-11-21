@@ -14,9 +14,9 @@ export class ProductItemComponent implements OnInit {
 
     constructor(private productService: ProductsService) {}
 
+    // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
     ngOnInit(): void {
         // ...
-        console.log('hey, product item here!');
     }
 
     addProductToCart() {
@@ -25,6 +25,6 @@ export class ProductItemComponent implements OnInit {
             quantity: 1
         };
         this.productService.setCartItem(cartItem);
-        console.log('product should be added to lacal storage!');
+        console.log('product should be added to local storage!');
     }
 }

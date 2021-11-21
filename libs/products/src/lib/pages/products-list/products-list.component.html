@@ -1,21 +1,21 @@
 <div class="products-page">
-  <h4 >الأصناف </h4>
+  <h4 >هنا يمكنك ايجاد كل شيء</h4>
   <div class="grid">
-    <div class="col-12 md:col-3 products-page-cats" *ngIf="!isCategoryPage">
-      <div class="field-checkbox" *ngFor="let category of categories">
+    <div class="col-12 md:col-2 products-page-cats mb-5" *ngIf="!isCategoryPage">
+      <div class="field-checkbox m-" *ngFor="let category of categories">
         <p-checkbox
           [(ngModel)]="category.checked"
           [binary]="true"
           [inputId]="category.id"
           (onChange)="categoriesFilter()"
         ></p-checkbox>
-        <label for="{{ category.id }}">{{ category.name }}</label>
+        <label for="{{ category.id }}">{{ category.name }} <i class="pi pi-{{ category.icon }}"></i></label>
       </div>
     </div>
     <div class="grid col-12 md:col-9">
-      <div [ngClass]="{'col-12 md:col-12' : !isCategoryPage, 'col-12' : isCategoryPage}">
+      <div >
         <div class="grid justify-content-around" *ngIf="products">
-          <div  [ngClass]="{'col-6 md:col-4 ' : !isCategoryPage, 'col-6 md:col-3' : isCategoryPage}" *ngFor="let product of products">
+          <div *ngFor="let product of products">
             <products-product-item [product]="product"></products-product-item>
           </div>
         </div>
@@ -23,3 +23,7 @@
     </div>
   </div>
 </div>
+<!-- 
+  [ngClass]="{'col-12 md:col-12' : !isCategoryPage, 'col-12' : isCategoryPage}"
+  [ngClass]="{'col-6 md:col-4 ' : !isCategoryPage, 'col-6 md:col-3' : isCategoryPage}" 
+-->

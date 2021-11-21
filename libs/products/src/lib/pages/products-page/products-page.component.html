@@ -3,7 +3,7 @@
     <div class="col-12 md:col-6">
       <ui-gallery [images]="product.images"></ui-gallery>
     </div>
-    <div class="col-12 mad:col-6">
+    <div class="col-12 md:col-6">
       <h2 class="product-name">{{ product.name }}</h2>
       <p class="product-desc">
         {{ product.description }}
@@ -14,8 +14,8 @@
       </div>
 
       <div class="product-price">
-        {{ product.price | currency}}
-        <span class="price-before"> {{ (product.price * 1.15) | currency }} </span>
+        {{ product.price | currency: 'MRU' }}
+        <span class="price-before"> {{ (product.price * 1.15) | currency: 'MRU' }} </span>
       </div>
       <div class="product-quantity">
          <div class="field col-12 md-3 p-0">
@@ -49,7 +49,6 @@
         ></button>
       </div>
     </div>
-
   </div>
 
   <div class="grid product-rich-desc">
@@ -58,3 +57,4 @@
     </div>
   </div>
 </div>
+<products-featured-products [featuredLimit]="12"></products-featured-products>

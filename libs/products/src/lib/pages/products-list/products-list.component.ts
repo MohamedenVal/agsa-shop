@@ -41,8 +41,8 @@ export class ProductsListComponent implements OnInit {
         this._getCategories();
     }
 
-    public setTitle(): void {
-        this.titleService.setTitle('المنتجات | ريم مارت' )
+    public setTitle(category=""): void {
+        this.titleService.setTitle('ريم مارت | ' + category)
     }
 
     private _getProducts(selectedCategories?: string[]) {
@@ -50,6 +50,7 @@ export class ProductsListComponent implements OnInit {
             .getProducts(selectedCategories)
             .subscribe((prods) => {
                 this.products = prods;
+                this.setTitle(prods[0]?.category?.name);
             });
     }
 

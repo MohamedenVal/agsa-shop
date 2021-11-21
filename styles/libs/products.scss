@@ -70,20 +70,20 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        min-height: 250px;
-        max-width: 150px;
-        margin-top: 85px;
+        height: 350px;
+        width: 250px;
+        margin-top: 65px;
         justify-content: space-around;
     }
 
     .image {
-        max-width: 100px;
-        max-height: 150px;
+        max-width: 200px;
+        max-height: 250px;
         margin-top: -55px;
     }
 
     .name {
-        margin: 10px 0;
+        margin: 5px 0;
         max-width: 200px;
     }
 
