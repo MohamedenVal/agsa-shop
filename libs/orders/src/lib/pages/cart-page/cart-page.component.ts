@@ -19,19 +19,21 @@ import { Title } from '@angular/platform-browser';
 export class CartPageComponent implements OnInit, OnDestroy {
     cartItemsDetailed: CarttItemDetailed[] = [];
     endSubs$: Subject<any> = new Subject();
-    cartCount = 0;
+    cartCount?: number;
+    subTotal!: number;
+    
 
     constructor(
         private router: Router,
         private cartService: CartService,
-        private productService: OrdersService,
+        private OrdersService: OrdersService,
         private titleService: Title
     ) {}
 
     ngOnInit(): void {
         this.setTitle();
 
-        this._getCartDeatails();
+        this._getCartDetails();
     }
 
     public setTitle(): void {
@@ -43,18 +45,18 @@ export class CartPageComponent implements OnInit, OnDestroy {
     }
 
     deleteCart(cartItem: CarttItemDetailed) {
-        this.cartService.delteCartItem(cartItem.product.id);
+        this.cartService.deleteCartItem(cartItem.product.id);
     }
 
-    _getCartDeatails() {
+    _getCartDetails() {
         this.cartService.cart$
             .pipe(takeUntil(this.endSubs$))
             .subscribe((resCart) => {
                 this.cartItemsDetailed = [];
-                this.cartCount = resCart?.items?.length ?? 0;
-                resCart.items.forEach((cartItem) => {
-                    this.productService
-                        .getSingleProduct(cartItem.productId || '')
+                this.cartCount = resCart.items?.length;
+                resCart.items?.forEach((cartItem) => {
+                    this.OrdersService
+                        .getSingleProduct(cartItem.productId ?? '1')
                         .subscribe((resProduct: Product) => {
                             this.cartItemsDetailed.push({
                                 product: resProduct,
@@ -64,6 +66,8 @@ export class CartPageComponent implements OnInit, OnDestroy {
                 });
             });
     }
+
+    // Implement some animation for removing an item from the cart
 
     ngOnDestroy(): void {
         this.endSubs$.next();

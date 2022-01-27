@@ -7,11 +7,24 @@ import { ButtonModule } from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileIconComponent } from './profile-icon/profile-icon.component';
 import { ContactComponent } from './contact/contact.component';
+import { UserIconComponent } from './user-icon/user-icon.component';
 
 const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'contact',
+        component: ContactComponent
+    },
+    {
+        path: 'client',
+        component: ContactComponent
+    },
+    {
+        path: 'client/signup',
+        component: ContactComponent
     }
 ];
 
@@ -24,10 +37,11 @@ const routes: Routes = [
         InputTextModule,
         ButtonModule
     ],
-    declarations: [LoginComponent, ProfileIconComponent, ContactComponent],
+    declarations: [LoginComponent, ProfileIconComponent, ContactComponent, UserIconComponent],
     exports: [
       ProfileIconComponent,
-      ContactComponent
+      ContactComponent,
+      UserIconComponent
     ]
 })
 export class UsersModule {}

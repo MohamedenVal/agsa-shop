@@ -17,7 +17,7 @@ export class ProductsService {
 
     constructor(private http: HttpClient) {}
 
-    // Getting the categories from the backend
+    // Getting the product from the backend
     getProducts(selectedCats?: string[]): Observable<Product[]> {
         let params = new HttpParams();
         if (selectedCats) {
@@ -27,9 +27,13 @@ export class ProductsService {
         return this.http.get<Product[]>(this.apiURLProducts);
     }
 
-    // Getting a specific category by id
+    // Getting a specific product by id
     getSingleProduct(ProductId: string): Observable<Product> {
         return this.http.get<Product>(`${this.apiURLProducts}${ProductId}`);
+    }
+    // Getting a product by name
+    getProductByName(productName: string): Observable<Product[]> {
+        return this.http.get<Product[]>(`${this.apiURLProducts}name/${productName}`);
     }
 
     // Creating a Product

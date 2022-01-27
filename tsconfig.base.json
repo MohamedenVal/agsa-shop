@@ -15,11 +15,13 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+            "@agsa-shop/clients": ["libs/clients/src/index.ts"],
             "@agsa-shop/orders": ["libs/orders/src/index.ts"],
             "@agsa-shop/products": ["libs/products/src/index.ts"],
+            "@agsa-shop/stores": ["libs/stores/src/index.ts"],
             "@agsa-shop/ui": ["libs/ui/src/index.ts"],
             "@agsa-shop/users": ["libs/users/src/index.ts"],
-            "@env/*" : ["environments/*"]
+            "@env/*": ["environments/*"]
         }
     },
     "exclude": ["node_modules", "tmp"]

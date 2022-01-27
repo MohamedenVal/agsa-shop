@@ -1,6 +1,6 @@
 .products-search {
     display: flex;
-    background-color: var(--surface-200);
+    background-color: #d7effb;
     border-radius: 10px;
     max-width: 275px;
     height: 35px;
@@ -100,4 +100,31 @@
     }
 }
 
-// featued products
+// featured products
+@media screen and (max-width: 768px) {
+    // products items ....
+.product-item {
+    &-wrapper {
+        height: 250px;
+        width: 170px;
+        margin: 40px 0;
+    }
+
+    .image {
+        max-width: 100px;
+        max-height: 150px;
+        margin-top: -25px;
+    }
+
+    .name {
+        margin: 5px 0;
+        max-width: 125px;
+    }
+
+    .add-to-cart {
+        border-radius: 15px;
+        margin-bottom: 5px;
+        font-size: .8em;
+    }
+}
+}

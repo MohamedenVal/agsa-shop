@@ -31,7 +31,9 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
         
         this.route.params.subscribe((params) => {
             if (params.productid) {
-                this._getProduct(params.productid);
+                // this._getProduct(params.productid);
+                this._getProductName(params.productid)
+                console.log(params.productid);           
             }
         });
     }
@@ -47,6 +49,16 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
             .subscribe((resProduct) => {
                 this.product = resProduct;
                 this.setTitle(resProduct.name)
+            });
+    }
+
+    private _getProductName(name: string){
+        this.productService
+            .getProductByName(name)
+            .pipe(takeUntil(this.endSub$))
+            .subscribe((resProduct) => {
+                this.product = resProduct[0];
+                this.setTitle(this.product.name)
             });
     }
 

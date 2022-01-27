@@ -1,7 +1,6 @@
+import { CartService, CartItem } from '@agsa-shop/orders';
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { Product } from '@agsa-shop/products';
-import { CartItem } from '../../models/cart';
-import { ProductsService } from '../../services/products.service';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -12,7 +11,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProductItemComponent implements OnInit {
     @Input() product!: Product;
 
-    constructor(private productService: ProductsService) {}
+    constructor(private cartService: CartService) {}
 
     // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
     ngOnInit(): void {
@@ -24,7 +23,6 @@ export class ProductItemComponent implements OnInit {
             productId: this.product.id,
             quantity: 1
         };
-        this.productService.setCartItem(cartItem);
-        console.log('product should be added to local storage!');
+        this.cartService.setCartItem(cartItem);
     }
 }

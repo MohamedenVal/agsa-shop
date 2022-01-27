@@ -1,11 +1,11 @@
 <p-toast></p-toast>
 <div class="admin-page">
-  <p-card header="Products" subheader="List of Products">
+  <p-card header="المنتجات" subheader="قائمة المنتجات ">
     <div class="p-grid">
       <div class="p-col-12">
         <p-toolbar>
           <div class="p-toolbar-group-left">
-            <p-button label="New" styleClass="p-button-success" icon="pi pi-plus" routerLink="form"></p-button>
+            <p-button label="جديد" styleClass="p-button-success" icon="pi pi-plus" routerLink="form"></p-button>
           </div>
         </p-toolbar>
       </div>
@@ -15,12 +15,13 @@
         <p-table [value]="products" styleClass="p-datatable-gridlines" [paginator]="true" [rows]="10">
           <ng-template pTemplate="header">
             <tr>
-              <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
-              <th pSortableColumn="image">Image <p-sortIcon field="image"></p-sortIcon></th>
-              <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
-              <th pSortableColumn="countInStock">Stock <p-sortIcon field="countInStock"></p-sortIcon></th>
-              <th pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon></th>
-              <th pSortableColumn="dateCreated">Created at<p-sortIcon field="dateCreated"></p-sortIcon></th>
+              <th pSortableColumn="name">الاسم <p-sortIcon field="name"></p-sortIcon></th>
+              <th pSortableColumn="image">الصورة <p-sortIcon field="image"></p-sortIcon></th>
+              <th pSortableColumn="price">الثمن <p-sortIcon field="price"></p-sortIcon></th>
+              <th pSortableColumn="countInStock">الكمية في المخزن <p-sortIcon field="countInStock"></p-sortIcon></th>
+              <th pSortableColumn="category">النوعية <p-sortIcon field="category"></p-sortIcon></th>
+              <th pSortableColumn="store">المتجر <p-sortIcon field="store"></p-sortIcon></th>
+              <th pSortableColumn="dateCreated">تاريخ الانشاء<p-sortIcon field="dateCreated"></p-sortIcon></th>
 
               <th></th>
             </tr>
@@ -32,6 +33,7 @@
               <td>{{ product.price }}</td>
               <td>{{ product.countInStock }}</td>
               <td>{{ product.category.name }}</td>
+              <td>{{ product.store?.name }}</td>
               <td>{{ product.dateCreated | date: 'short' }}</td>
               <td>
                 <p-button (click)="deleteProduct(product.id)" styleClass="p-button-danger mr-2" icon="pi pi-trash">

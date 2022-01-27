@@ -1,4 +1,5 @@
 import { Category } from './category';
+import { Store } from './store';
 
 export class Product {
     id?: string;
@@ -10,6 +11,7 @@ export class Product {
     brand?: string;
     price!: number;
     category!: Category;
+    store!: Store;
     countInStock?: number;
     rating?: number;
     nmuReviews?: number;

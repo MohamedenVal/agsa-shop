@@ -8,7 +8,9 @@ import {
     CategoriesService,
     Category,
     Product,
-    ProductsService
+    ProductsService,
+    Store,
+    StoresService
 } from '@agsa-shop/products';
 
 @Component({
@@ -22,6 +24,7 @@ export class ProductsFormComponent implements OnInit {
     editMode = false;
     productPramId = '';
     categories!: Category[];
+    stores!: Store[];
     imageDisplay!: string | ArrayBuffer | null | undefined;
     imagesPreview!: string[] | ArrayBuffer | null | undefined;
 
@@ -30,6 +33,7 @@ export class ProductsFormComponent implements OnInit {
         private formBuilder: FormBuilder,
         private productsService: ProductsService,
         private categoriesService: CategoriesService,
+        private storesService: StoresService,
         private location: Location,
         private route: ActivatedRoute
     ) {}
@@ -37,6 +41,7 @@ export class ProductsFormComponent implements OnInit {
     ngOnInit(): void {
         this._initForm();
         this._getCategories();
+        this._getStores();
         this._checkEditMode();
     }
 
@@ -46,6 +51,7 @@ export class ProductsFormComponent implements OnInit {
             brand: ['', Validators.required],
             price: ['', Validators.required],
             category: ['', Validators.required],
+            store: ['', Validators.required],
             countInStock: ['', Validators.required],
             description: ['', Validators.required],
             richDescription: [''],
@@ -58,7 +64,13 @@ export class ProductsFormComponent implements OnInit {
         this.categoriesService.getCategories().subscribe((categories) => {
             this.categories = categories;
         });
-    }
+    };
+
+    private _getStores() {
+        this.storesService.getStores().subscribe((stores) => {
+            this.stores = stores;
+        });
+    };
 
     onSubmit() {
         this.isSubmitted = true;
@@ -91,6 +103,7 @@ export class ProductsFormComponent implements OnInit {
         }
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     imagesUpload(event: any) {
         const files = event.target.files;
 
@@ -196,6 +209,9 @@ export class ProductsFormComponent implements OnInit {
                         this.productForm.brand.setValue(product.brand);
                         this.productForm.category.setValue(
                             product.category?.id
+                        );
+                        this.productForm.store.setValue(
+                            product.store?.id
                         );
                         this.productForm.price.setValue(product.price);
                         this.productForm.countInStock.setValue(

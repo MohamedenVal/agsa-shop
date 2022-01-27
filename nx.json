@@ -35,6 +35,9 @@
             "tags": [],
             "implicitDependencies": ["admin"]
         },
+        "clients": {
+            "tags": []
+        },
         "eshop": {
             "tags": []
         },
@@ -46,6 +49,9 @@
             "tags": []
         },
         "products": {
+            "tags": []
+        },
+        "stores": {
             "tags": []
         },
         "ui": {

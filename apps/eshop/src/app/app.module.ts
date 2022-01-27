@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsModule } from '@agsa-shop/products';
 import { UiModule } from '@agsa-shop/ui';
 import { OrdersModule } from '@agsa-shop/orders';
+import { UsersModule } from '@agsa-shop/users';
+import { ClientsModule } from '@agsa-shop/clients';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -40,6 +42,8 @@ const routes: Routes = [
         ProductsModule,
         UiModule,
         OrdersModule,
+        UsersModule,
+        ClientsModule,
         AccordionModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: environment.production,

@@ -1,17 +1,17 @@
 <p-toast></p-toast>
 <div class="admin-page">
-  <p-card [header]="editMode ? 'Edit Product' : 'Add Product'"
-    [subheader]="editMode ? 'You can dit the Products here' : 'You can add a Product here'">
+  <p-card [header]="editMode ? 'تعديل المنتج' : 'اضف منتجا'"
+    [subheader]="editMode ? 'يمكنك تعديل المنتج هنا' : 'يمكنك انشاء منتج هنا'">
     <div class="grid">
       <div class="col-12">
         <p-toolbar>
           <div class="toolbar-group-left">
           </div>
           <div class="toolbar-group-left">
-            <p-button styleClass="p-button-primary mr-2" [label]="editMode ? 'Edit' : 'Create'" icon="pi pi-pencil"
+            <p-button styleClass="p-button-primary mr-2" [label]="editMode ? 'عدل' : 'أنشاء'" icon="pi pi-pencil"
               (click)="onSubmit()"></p-button>
 
-            <p-button styleClass="p-button-secondary" label="Cancel" icon="pi pi-arrow-circle-left"></p-button>
+            <p-button styleClass="p-button-secondary" label="الغاء" icon="pi pi-arrow-circle-left"></p-button>
           </div>
         </p-toolbar>
       </div>
@@ -21,31 +21,31 @@
         <form [formGroup]="form">
           <div class="fluid formgrid grid">
             <div class="field col-12 md:col-4">
-              <label for="name">Name</label><br>
+              <label for="name">الاسم</label><br>
               <input formControlName="name" id="name" type="text" pInputText>
-              <small *ngIf="productForm.name.invalid && isSubmitted" class="p-error">Name is required!</small>
+              <small *ngIf="productForm.name.invalid && isSubmitted" class="p-error">الاسم مطلوب!</small>
             </div>
 
             <div class="field col-12 md:col-4">
-              <label for="brand">Brand</label><br>
+              <label for="brand">الماركة</label><br>
               <input formControlName="brand" id="brand" type="text" pInputText>
-              <small *ngIf="productForm.brand.invalid && isSubmitted" class="p-error">Brand is required!</small>
+              <small *ngIf="productForm.brand.invalid && isSubmitted" class="p-error">الماركة مطلوبة!</small>
             </div>
             <div class="field col-12 md:col-4">
-              <label for="price">Price</label><br>
+              <label for="price">السعر</label><br>
               <p-inputNumber formControlName="price" mode="decimal" inputId="price" [useGrouping]="false"></p-inputNumber>
-              <small *ngIf="productForm.price.invalid && isSubmitted" class="p-error" >Price is required!</small>
+              <small *ngIf="productForm.price.invalid && isSubmitted" class="p-error" >السعر مطلوب!</small>
             </div>
 
           </div>
           <div class="fluid formgrid grid">
             <div class="field col-12 md:col-4">
-              <label for="countInStock">Count in stock</label><br>
+              <label for="countInStock">العدد الموجود</label><br>
               <p-inputNumber formControlName="countInStock" mode="decimal" inputId="countInStock" [useGrouping]="false"></p-inputNumber>
-              <small *ngIf="productForm.countInStock.invalid && isSubmitted" class="p-error">Price is required!</small>
+              <small *ngIf="productForm.countInStock.invalid && isSubmitted" class="p-error">العدد الموجود مطلوب!</small>
             </div>
             <div class="field col-12 md:col-4">
-              <label for="category">Category</label><br>
+              <label for="category">النوعية</label><br>
               <p-dropdown
                 [options]="categories"
                 formControlName="category"
@@ -56,25 +56,39 @@
                 [showClear]="true"
                 placeholder="Select a Category "
                ></p-dropdown>
-              <small *ngIf="productForm.category.invalid && isSubmitted" class="p-error">Category is required!</small>
+              <small *ngIf="productForm.category.invalid && isSubmitted" class="p-error">النوعية مطلوبة!</small>
             </div>
             <div class="field col-12 md:col-4">
-              <label for="isFeatured">Is Featured</label><br>
+              <label for="category">المتجر</label><br>
+              <p-dropdown
+                [options]="stores"
+                formControlName="store"
+                optionLabel="name"
+                optionValue="id"
+                [filter]="true"
+                filterBy="name"
+                [showClear]="true"
+                placeholder="Select a store "
+               ></p-dropdown>
+              <small *ngIf="productForm.store.invalid && isSubmitted" class="p-error">المتجر مطلوب!</small>
+            </div>
+            <div class="field col-12 md:col-4">
+              <label for="isFeatured">معروض في الواجهة</label><br>
               <p-inputSwitch formControlName="isFeatured"></p-inputSwitch>
             </div>
 
             <div class="field col-12 md:col-4">
-              <label for="description">Description</label><br>
+              <label for="description">التفاصيل</label><br>
               <textarea formControlName="description" [rows]="3" [cols]="30" pInputTextarea ></textarea>
-              <small *ngIf="productForm.description.invalid && isSubmitted" class="p-error">Description is required!</small>
+              <small *ngIf="productForm.description.invalid && isSubmitted" class="p-error">التفاصيل مطلوبة!</small>
             </div>
 
             <div class="field col-12">
-              <label for="richDescription">Products details</label><br>
+              <label for="richDescription">الصفاصيل المطولة </label><br>
               <p-editor formControlName="richDescription" [style]="{'height': '320px'}"></p-editor>
             </div>
             <div class="field col-12">
-              <label for="image">Main Image</label>
+              <label for="image">الثصورة الرئيسية</label>
               <input
                 type="file"
                 name="image"
@@ -83,13 +97,13 @@
                 id="image"
                 (change)="onImageUpload($event)"
               />
-              <small *ngIf="productForm.image.invalid && isSubmitted" class="p-error">The main image is required!</small>
+              <small *ngIf="productForm.image.invalid && isSubmitted" class="p-error">الصورة الرئيسية مطلوبة!</small>
               <div class="col-2 p-pt-2 p-pl-0">
                 <img style="width: 100%;" [src]="imageDisplay" alt="the main image for the product">
               </div>
             </div>
             <div class="field col-12" *ngIf="editMode">
-              <label for="images">Add More Images</label>
+              <label for="images">أضف صورا اخرى </label>
               <input type="file" name="images" class="p-inputtext" accept="image/*" id="images" multiple (change)="imagesUpload($event)"/>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Product } from '@agsa-shop/products';
+import { Product } from '../models/product';
 
 @Component({
   selector: 'products-whatsapp-button',
@@ -7,16 +7,17 @@ import { Product } from '@agsa-shop/products';
   styleUrls: ['./whatsapp-button.component.scss']
 })
 export class WhatsappButtonComponent {
+  @Input() product!: Product;
+
   options = {
     "enabled":true,
     "brandSetting":{
         "brandName":"Rim Mart | ريم مارت",
-        "messageText":"السلام علكم, انا مهتم في هذا العنصر: https://rimmarting.rf.gd/products/",
-        "phoneNumber":"22232074311"
+        "messageText":"السلام علكم, انا مهتم بهذا العنصر: https://rimmarting.rf.gd/products/",
+        // "phoneNumber": this.product.store.phone
     }
   };
   
-  @Input() product!: Product;
 
   // constructor() { }
 

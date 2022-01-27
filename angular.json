@@ -22,8 +22,15 @@
                             "apps/admin/src/assets",
                             "apps/admin/src/manifest.webmanifest"
                         ],
-                        "styles": ["apps/admin/src/styles.scss", "node_modules/quill/dist/quill.core.css", "node_modules/quill/dist/quill.snow.css"],
-                        "scripts": ["node_modules/quill/dist/quill.js", "node_modules/jquery/dist/jquery.min.js"],
+                        "styles": [
+                            "apps/admin/src/styles.scss",
+                            "node_modules/quill/dist/quill.core.css",
+                            "node_modules/quill/dist/quill.snow.css"
+                        ],
+                        "scripts": [
+                            "node_modules/quill/dist/quill.js",
+                            "node_modules/jquery/dist/jquery.min.js"
+                        ],
                         "serviceWorker": true,
                         "ngswConfigPath": "apps/admin/ngsw-config.json"
                     },
@@ -119,6 +126,31 @@
                     "outputs": ["{options.outputFile}"],
                     "options": {
                         "lintFilePatterns": ["apps/admin-e2e/**/*.{js,ts}"]
+                    }
+                }
+            }
+        },
+        "clients": {
+            "projectType": "library",
+            "root": "libs/clients",
+            "sourceRoot": "libs/clients/src",
+            "prefix": "agsa-shop",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/clients"],
+                    "options": {
+                        "jestConfig": "libs/clients/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/clients/src/**/*.ts",
+                            "libs/clients/src/**/*.html"
+                        ]
                     }
                 }
             }
@@ -293,6 +325,31 @@
                         "lintFilePatterns": [
                             "libs/products/src/**/*.ts",
                             "libs/products/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
+        "stores": {
+            "projectType": "library",
+            "root": "libs/stores",
+            "sourceRoot": "libs/stores/src",
+            "prefix": "agsa-shop",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/stores"],
+                    "options": {
+                        "jestConfig": "libs/stores/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/stores/src/**/*.ts",
+                            "libs/stores/src/**/*.html"
                         ]
                     }
                 }

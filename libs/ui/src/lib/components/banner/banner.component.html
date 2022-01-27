@@ -6,7 +6,13 @@
     <div class="col-11 md:col-5 banner-text">
       <h1>أفضل المنتجات </h1>
       <h2>في جميع البضائع</h2>
-      <p-button styleClass="mt-4 banner-button" label="المزيد" icon="pi pi-chevron-left" iconPos="right" ></p-button>
+      <p-button 
+        styleClass="mt-4 banner-button" 
+        label="المزيد" 
+        icon="pi pi-chevron-left" 
+        iconPos="right"
+      (onClick)="showMore()"
+      ></p-button>
     </div>
     <div class="col-12 md:col-6 banner-image">
       <img src="assets/images/banner-image.svg" alt="women with shopping cart">

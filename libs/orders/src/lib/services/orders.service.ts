@@ -10,8 +10,8 @@ import { Product } from '../models/product';
     providedIn: 'root'
 })
 export class OrdersService {
-    apiURLOrders = environment.apiURL + 'orders/';
-    apiURLProducts = environment.apiURL + 'products/';
+    apiURLOrders = environment.apiURL + 'orders';
+    apiURLProducts = environment.apiURL + 'products';
 
     constructor(private http: HttpClient) {}
 
@@ -20,7 +20,7 @@ export class OrdersService {
         return this.http.get<Order[]>(this.apiURLOrders);
     }
 
-    // Getting a specific catewgory by id
+    // Getting a specific category by id
     getSingleOrder(orderId: string): Observable<Order> {
         return this.http.get<Order>(`${this.apiURLOrders}${orderId}`);
     }
@@ -44,10 +44,10 @@ export class OrdersService {
 
     // Deleting a order
     deleteOrder(orderId: string): Observable<any> {
-        return this.http.delete<any>(`${this.apiURLOrders}${orderId}`);
+        return this.http.delete<any>(`${this.apiURLOrders}/${orderId}`);
     }
     // code for services in other libs but eliminating circler dependencies
     getSingleProduct(ProductId: string): Observable<Product> {
-        return this.http.get<Product>(`${this.apiURLProducts}${ProductId}`);
+        return this.http.get<Product>(`${this.apiURLProducts}/${ProductId}`);
     }
 }

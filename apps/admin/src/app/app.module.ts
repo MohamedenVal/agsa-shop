@@ -42,6 +42,8 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { AuthGuard, JwtInterceptor, UsersModule } from '@agsa-shop/users';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@env/environment';
+import { StoreFormComponent } from './pages/stores/store-form/store-form.component';
+import { StoresListComponent } from './pages/stores/store-list/store-list.component';
 
 const routes: Routes = [
     {
@@ -90,6 +92,18 @@ const routes: Routes = [
                 component: CategoriesFormComponent
             },
             {
+                path: 'stores',
+                component: StoresListComponent
+            },
+            {
+                path: 'stores/form',
+                component: StoreFormComponent
+            },
+            {
+                path: 'stores/form/:id',
+                component: StoreFormComponent
+            },
+            {
                 path: 'users',
                 component: UsersListComponent
             },
@@ -117,7 +131,9 @@ const routes: Routes = [
         UsersListComponent,
         UsersFormComponent,
         OrdersListComponent,
-        OrdersDetailComponent
+        OrdersDetailComponent,
+        StoresListComponent,
+        StoreFormComponent
     ],
     imports: [
         BrowserModule,
@@ -157,6 +173,10 @@ const routes: Routes = [
         ConfirmationService,
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    exports: [
+      StoreFormComponent,
+      StoresListComponent
+    ]
 })
 export class AppModule {}
