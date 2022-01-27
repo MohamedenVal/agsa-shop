@@ -1,0 +1,57 @@
+<p-toast></p-toast>
+<div class="admin-page">
+  <p-card [header]="editMode ? 'Edit Store' : 'Add Store'" [subheader]="editMode ? 'You can dit the store here' : 'You can add a store here'">
+    <div class="grid">
+      <div class="col-12">
+        <p-toolbar>
+          <div class="toolbar-group-left">
+          </div>
+          <div class="toolbar-group-left">
+            <p-button
+            styleClass="p-button-primary mr-2"
+            [label]="editMode ? 'تعديل' : 'انشاء '"
+            icon="pi pi-pencil"
+            (click)="onSubmit()"
+            ></p-button>
+
+            <p-button
+            styleClass="p-button-secondary"
+            label="الغاء"
+            icon="pi pi-arrow-circle-left"
+            ></p-button>
+          </div>
+        </p-toolbar>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="col-12">
+        <form [formGroup]="form">
+          <div class="fluid formgrid grid">
+            <div class="field col">
+              <label for="name">الاسم</label><br>
+              <input formControlName="name" id="name" type="text" pInputText>
+              <small *ngIf="storeForm.name.invalid && isSubmitted" class="p-error">الاسم مطلوب</small>
+            </div>
+
+            <div class="field col">
+              <label for="phone">رقم الهاتف</label><br>
+              <input formControlName="phone" id="phone" type="text" pInputText>
+              <small *ngIf="storeForm.phone.invalid && isSubmitted" class="p-error">الاسم مطلوب</small>
+            </div>
+
+            <div class="field col">
+              <label for="icon">الايقونة</label><br>
+              <input formControlName="icon" id="icon" type="text" pInputText>
+              <small *ngIf="storeForm.icon.invalid && isSubmitted" class="p-error">الايقونة طلوبة</small>
+            </div>
+            <div class="field col">
+              <label for="color">اللون</label><br>
+              <p-colorPicker formControlName="color"></p-colorPicker>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </p-card>
+</div>
+
