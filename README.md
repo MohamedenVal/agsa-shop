@@ -2,7 +2,7 @@
 
 # AgsaShop
 
-<p style="text-align: center;"><img src="https://rimmarting.rf.gd/assets/logo.png" width="450"></p>
+<p style="text-align: center;"><img src="./apps/eshop/assets/logo.png" width="450"></p>
 
 This project was generated using [Nx](https://nx.dev).
 
