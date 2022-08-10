@@ -1,5 +1,8 @@
 <div class="container">
-  <eshop-header></eshop-header>
-  <router-outlet></router-outlet>
+  <eshop-header (toggleNav)="toggleNav()"></eshop-header>
+  <eshop-side-bar [state]="state"></eshop-side-bar>
+  <main class="mt-8" (click)="hideNav()">
+    <router-outlet></router-outlet>
+  </main>
   <eshop-footer></eshop-footer>
 </div>

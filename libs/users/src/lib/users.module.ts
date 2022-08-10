@@ -2,29 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './pages/login/login.component';
 import { RouterModule, Routes } from '@angular/router';
-import { InputTextModule } from 'primeng/inputtext';
-import { ButtonModule } from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileIconComponent } from './profile-icon/profile-icon.component';
-import { ContactComponent } from './contact/contact.component';
 import { UserIconComponent } from './user-icon/user-icon.component';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
 
 const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent
-    },
-    {
-        path: 'contact',
-        component: ContactComponent
-    },
-    {
-        path: 'client',
-        component: ContactComponent
-    },
-    {
-        path: 'client/signup',
-        component: ContactComponent
     }
 ];
 
@@ -35,12 +22,11 @@ const routes: Routes = [
         FormsModule,
         ReactiveFormsModule,
         InputTextModule,
-        ButtonModule
+        ButtonModule,
     ],
-    declarations: [LoginComponent, ProfileIconComponent, ContactComponent, UserIconComponent],
+    declarations: [LoginComponent, ProfileIconComponent, UserIconComponent],
     exports: [
       ProfileIconComponent,
-      ContactComponent,
       UserIconComponent
     ]
 })

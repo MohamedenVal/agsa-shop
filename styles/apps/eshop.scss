@@ -15,6 +15,7 @@
 }
 
 // Special styles for eshop App
+@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap');
 
 @import '../libs/products.scss';
 @import '../libs/ui.scss';
@@ -23,7 +24,8 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Noto Naskh Arabic', serif;
+    position: relative;
 }
 
 .container {
@@ -35,16 +37,68 @@ body {
 }
 
 header {
+  z-index: 9;
     position: relative;
     top: 0;
     right: 0;
     margin-bottom: 25px;
     .logo {
+      margin: 0 8px;
         img {
             max-width: 36px;
         }
     }
 }
+
+.side-bar {
+  display: none;
+  transform: translateX(100%);
+  z-index: 2;
+  position: fixed;
+  background-color: var(--surface-100);
+  top: 9vh;
+  right: 0;
+  height: 94vh;
+  width: 60vw;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-top-right-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: all .3s ease-out;
+
+  ul.side-nav {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    li {
+      list-style: none;
+      border-bottom: 1px solid var(--surface-600);
+      width: 60%;
+
+      a {
+          color: var(--surface-600);
+          font-size: 1.2rem;
+          font-weight: 500;
+          text-decoration: none;
+          cursor: pointer;
+
+          &:hover {
+              color: $primary-color;
+          }
+      }
+    }
+  }
+}
+
+.show-side {
+  display: flex;
+  transform: translateX(0);
+  transition: all .3s ease-in;
+}
+
 
 .fixed-nav {
     position: fixed;
@@ -59,11 +113,15 @@ header {
     border-radius: 15px;
 }
 
-.top-nav {
-    margin-top: 72px;
+nav {
+  display: flex;
+  justify-content: space-between;
 }
+
 .nav {
-    width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
 
     li {
         list-style: none;
@@ -72,7 +130,7 @@ header {
 
         a {
             color: var(--surface-600);
-            font-size: 1.2em;
+            font-size: 1.2rem;
             font-weight: 500;
             text-decoration: none;
             cursor: pointer;
@@ -89,11 +147,29 @@ header {
     border-radius: 15px;
     display: flex;
 }
-
-.main-icon {
-    font-size: 24px;
-    float: left;
+.user-icon {
+  font-size: 24px;
+  margin-bottom: 100px;
 }
+.main-icon {
+    float: left;
+    margin: 6px 0;
+    font-size: 24px;
+}
+
+.menu-icon {
+  display: none;
+  z-index: 9;
+  margin: 0;
+  padding: 6px;
+
+  &:hover {
+    border-radius: 50%;
+    border: 1px solid var(--surface-100);
+    background-color: var(--surface-300);
+  }
+}
+
 
 // .navigation {
 // }
@@ -109,11 +185,11 @@ footer {
         align-items: center;
 
         .social {
-            margin-top: 15px;
-            text-align: right;
-            .nav {
-                justify-content: flex-end;
-            }
+          margin-top: 15px;
+          text-align: right;
+          .nav {
+            justify-content: flex-end;
+          }
         }
     }
 }
@@ -137,11 +213,19 @@ footer {
 // media queries for neccesry syles (mobile friendly )
 
 @media screen and (max-width: 768px) {
+  .user-icon, .main-icon, .menu-icon {
+    font-size: 26px;
+  }
     .nav {
+      display: none;
         li {
             a {
                 font-size: 1em;
             }
         }
+    }
+
+    .menu-icon {
+      display: block;
     }
 }

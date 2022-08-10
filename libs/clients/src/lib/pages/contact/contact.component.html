@@ -1,1 +1,37 @@
-<p>contact works!</p>
+<h3>تواصل معنا </h3>
+<div class="grid p-fluid">
+  <form [formGroup]="form" class="col-12 grid p-fluid">
+    <div class="col-8 md:col-4">
+      <div class="p-inputgroup">
+        <input formControlName="username" type="text" pInputText placeholder="الاسم">
+      </div>
+    </div>
+
+    <div class="col-8 md:col-4">
+      <div class="p-inputgroup">
+        <input formControlName="email" type="email" pInputText placeholder="البريد الإلكتروني">
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="p-inputgroup">
+        <input formControlName="topic" type="text" pInputText placeholder="الموضوع">
+      </div>
+    </div>
+
+    <div class="col-12 md:col-8">
+      <textarea  formControlName="message"  placeholder="ضع رسالتك هنا..." pInputTextarea cols="24" rows="14"></textarea>
+    </div>
+
+  </form>
+
+  <div class="col-12 md:col-3">
+    <p-button label="إرسال" styleClass="full-width" (onClick)="onSubmit()"></p-button>
+  </div>
+
+  <!-- <div class="col-12 mt-5">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4768.250243434975!2d-15.974999394024671!3d18.05687035678592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xe964ddde4a8ef83%3A0x4f75924698c6c9b3!2sRim%20Codes!5e0!3m2!1sen!2s!4v1659958776061!5m2!1sen!2s"  height="600" style="border:0; width: 100%; opacity: 0.7;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div> -->
+
+</div>
+

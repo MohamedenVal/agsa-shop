@@ -178,8 +178,15 @@
                             "apps/eshop/src/manifest.webmanifest",
                             "apps/eshop/src/manifest.webmanifest"
                         ],
-                        "styles": ["apps/eshop/src/styles.scss"],
-                        "scripts": [],
+                        "styles": [
+                          "apps/eshop/src/styles.scss",
+                          "node_modules/quill/dist/quill.core.css",
+                          "node_modules/quill/dist/quill.snow.css"
+                        ],
+                        "scripts": [
+                          "node_modules/quill/dist/quill.js",
+                          "node_modules/jquery/dist/jquery.min.js"
+                        ],
                         "serviceWorker": true,
                         "ngswConfigPath": "apps/eshop/ngsw-config.json"
                     },

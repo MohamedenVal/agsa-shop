@@ -1,15 +1,19 @@
 import { CartService } from '@agsa-shop/orders';
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'eshop-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-    constructor(cartService: CartService) {
-        cartService.initCartLocalStorage();
-    }
+export class HeaderComponent {
+  @Output() toggleNav = new EventEmitter<string>();
 
-    ngOnInit(): void {}
+  constructor(cartService: CartService) {
+    cartService.initCartLocalStorage();
+  }
+
+  navToggler() {
+    this.toggleNav.emit('toggle');
+  }
 }

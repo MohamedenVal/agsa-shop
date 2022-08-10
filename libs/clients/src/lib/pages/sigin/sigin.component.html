@@ -1,1 +1,49 @@
-<p>sigin works!</p>
+<div class="signin-register">
+  <div class="signin-register-panel">
+    <div class="grid">
+      <div class="col-12">
+        <img src="assets/login-photo.png" alt="">
+      </div>
+
+      <div class="col-12 p-5">
+        <h3>مرحبا بكم</h3>
+        <h2>تسجيل الدخول</h2>
+        <form [formGroup]="logInFormGroup">
+          <div class="grid">
+            <div class="col-12">
+              <div class="input-group">
+                <span class="inputgroup-addon ml-2"><i class="pi pi-user"></i></span>
+                <input type="text" formControlName="email" pInputText placeholder="Email">
+              </div>
+              <small *ngIf="loginForm.email.invalid && isSubmitted" class="p-error">
+                الإيميل غير موجود أو خاطء
+              </small>
+            </div>
+            <div class="col-12">
+              <div class="p-input-group">
+                <span class="inputgroup-addon ml-2"><i class="pi pi-lock"></i></span>
+                <input type="password" formControlName="password" pInputText placeholder="Password">
+                <small *ngIf="loginForm.password.invalid && isSubmitted" class="p-error">
+                  كلمة السر غير صالحة
+                </small>
+              </div>
+            </div>
+            <div class="col-12">
+              <p-button label="سجل الدخول" styleClass="full-width" (onClick)="onSubmit()"></p-button>
+            </div>
+            <div class="col-12">
+              <small *ngIf="isSubmitted && authError" class="p-error">
+                {{ authMessage }}
+              </small>
+            </div>
+            <div class="col-12 signup">
+              <span class="signup-text">ليس لديك حساب </span>
+              <span class="signup-link" [routerLink]="['/', 'client', 'sign-up']">قم بتسجيل حساب </span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

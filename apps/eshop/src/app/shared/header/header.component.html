@@ -1,34 +1,28 @@
 <header class="relative">
   <div class="fixed-nav">
     <div class="grid mt-2">
-      
-      <div class="col-4">
+
+      <div class="col-2">
         <div class="logo">
-          <a href="https://rimmarting.rf.gd/">
+          <a routerLink="/">
           <img src="assets/logo.png" alt="logo"></a>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-4 md:col-4 lg:col-5">
         <products-search></products-search>
       </div>
-      <div class="col-2">
-        <agsa-shop-user-icon></agsa-shop-user-icon>
+      <nav class="col-2 md:col-5 lg:col-4">
+        <eshop-nav></eshop-nav>
+      </nav>
+      <div class="col-4 md:col-1 px-3">
+        <i
+        (click)="navToggler()" routerLinkActive="router-link-active"
+        class="pi pi-bars mr-3 text-secondary main-icon menu-icon"
+        ></i>
         <orders-cart-icon></orders-cart-icon>
       </div>
 
-    </div>
-  </div>
-
-  <div class="grid top-nav">
-
-    <div class="col-12 md:col-12">
-      <div class="grid">
-        <div class="col">
-          <eshop-nav></eshop-nav>
-        </div>
       </div>
     </div>
-
-  </div>
 
 </header>

@@ -18,6 +18,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@env/environment';
+import { SideBarComponent } from './shared/side-bar/side-bar.component';
 
 const routes: Routes = [
     {
@@ -32,7 +33,8 @@ const routes: Routes = [
         HomePageComponent,
         FooterComponent,
         HeaderComponent,
-        NavComponent
+        NavComponent,
+        SideBarComponent
     ],
     imports: [
         BrowserModule,

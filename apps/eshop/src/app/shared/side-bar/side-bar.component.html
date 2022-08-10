@@ -1,0 +1,10 @@
+<div class="side-bar" [ngClass]="state ? 'show-side' : ''">
+  <ul class="side-nav">
+    <li><a routerLink="/" (click)="hideNav()">الرئيسية</a></li>
+    <li><a routerLink="/products" (click)="hideNav()">المنتجات</a></li>
+    <li><a routerLink="/contact" (click)="hideNav()">تواصل معنا</a></li>
+  </ul>
+  <div class="icon" (click)="hideNav()">
+    <agsa-shop-user-icon></agsa-shop-user-icon>
+  </div>
+</div>

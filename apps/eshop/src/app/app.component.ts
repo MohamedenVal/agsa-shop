@@ -6,4 +6,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'eshop';
+  state = false;
+
+  toggleNav() {
+    this.state = !this.state;
+
+  }
+
+  hideNav() {
+    this.state = false;
+  }
 }
